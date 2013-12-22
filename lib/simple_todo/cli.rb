@@ -8,7 +8,7 @@ module SimpleTodo
     desc "add [TASK] [-c [CONTENT]]", "add task to todo list."
     option :content, aliases: :c
     def add(task_name)
-      content options[:content]
+      content = options[:content] || ""
       DB.prepare
       Task.create!(name:task_name,content:content).reload
     end
